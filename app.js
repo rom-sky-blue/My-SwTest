@@ -2,9 +2,11 @@ import { Gallery } from './image-list.js';
 
 // 通常のJavaScriptとは別スレッドで動作する →グローバル変数のやりときは不可能。DOMへのアクセス不可能
 // サービスワーカーの登録
-// プライベートモードでは利用できない
+// プライベートモードでは利用できないメソッドがあるためプライベートモードでの利用は非推奨　https://developer.mozilla.org/ja/docs/Web/API/Navigator/serviceWorker
 // 古いサービスワーカとの競合についてはService worker側で自動で整合処理をしてくれる
-// →非同期処理なので
+// →非同期処理なのでXMLHttpRequestやlocalStorageは利用できない
+// サービスワーカが動作しないスコープ外のページからのリクエストはハンドリングできない。()
+
 // ハードウェア情報についても取得可能
 //  サービスワーカの登録条件
 // 不具合等でワーカーの登録に失敗した時は何もしない
@@ -16,13 +18,11 @@ import { Gallery } from './image-list.js';
 
 // 変数などは保持できない　→
 
-// リクエストはGETのみキャッシュできる。POSTの
+// リクエストはGETのみキャッシュできる。POST
 const registerServiceWorker = async () => {
   if ('serviceWorker' in navigator) {
     try {
-      const registration = await navigator..register('/sw.js', {
-        scope: '/sw-test/',
-      });
+      const registration = await navigator.register('/sw.js', {});
       if (registration.installing) {
         console.log('Service worker installing');
       } else if (registration.waiting) {
