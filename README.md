@@ -28,10 +28,3 @@ injectManifest マニュアルモード。Workboxが非対応の機能を実装�
 
 更新について
 https://developer.chrome.com/docs/workbox/handling-service-worker-updates/
-
-見出し1
-見出し2
-見出し3
-見出し4
-見出し5
-見出し6
