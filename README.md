@@ -1,5 +1,5 @@
 # My-SwTest
-#サンプル
+## サンプル
 
 PWA対応について
 PWAとは
@@ -9,12 +9,14 @@ Service workerとは Jsは基本シングルスレッドだが別スレッドで
 
 キャッシュについて https://developer.mozilla.org/ja/docs/Web/API/Cache サービスワーカーの機能としてリクエスト/レスポンス情報をCacheインターフェースに保持する仕組みがある。
 
-##ライフサイクル 1.サービスワーカーの登録(メインスレッド) 2. installイベント(サービスワーカーごとに1回)。addEventListener でコールバックできる 　　この時点でCacheが作成される
+## ライフサイクル 
+1.サービスワーカーの登録(メインスレッド)   
+2. installイベント(サービスワーカーごとに1回)。addEventListener でコールバックできる。この時点でCacheが作成される  
 
 アクティブベーション サービスワーカーが利用可能な状態。 アクティブベーションされた後は基本以下の状態を繰り返す。 terminated:なにもしてない場合は常にこの状態 idle：リクエストイベント、ServiceWorkerGlobalScope.message イベントなどうけとった場合、サービスワーカーがなんらかの処理中の状態
 pwa時にキャッシュがのこってしまう対応について 基本的にサーバーコードに変更がある場合、24時間ごとに自動更新してくれる。(ServiceWorkerRegistration.update()の仕様) ただ、運用上24時間経過せずアプリを利用するケースがあるため意図せず古いキャッシュを参照し、 意図しない動作をしてしまう可能性がある。
 
-Workboxについて
+## Workboxについて
 servie workerを気軽に利用できるようにしたモジュールセットのこと。 Vue CLIなどでは基本これを利用することで自前でService Workerを利用しなくて済む。 https://developer.chrome.com/docs/workbox/framework-integrations/
 
 Workboxのモードについて
